@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Export";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Export</h2>
+
+
+
+<h2>
+    Экспорт файла Excel
+</h2>
+
+
+
+<a class="btn btn-warning myButton1" href="#">Export XLS</a>
+
+
+<div">
+    <a href="@Url.RouteUrl("Default", new { controller = "Home", action = "Export"})">Скачать файл</a>
+    </div>

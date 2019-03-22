@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Import";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>*@
+
+
+
+<h2 class="mt-md-2">Import</h2>
+
+<div>
+
+    @using (Html.BeginForm("Import", "Home", FormMethod.Post, new { @class = "mt-md-5", enctype = "multipart/form-data", id = "frm-excel" }))
+    {
+        <div class="row form-group mt-10">
+            <div class="custom-file col-md-4">
+                <input type="file" class="custom-file-input" name="fileExcel" id="fileExcel" required>
+                @Html.Label("fileExcel", "Choose excel-файл ...", new { @class = "custom-file-label" })
+                <div class="invalid-feedback">Example invalid custom file feedback</div>
+            </div>
+ 
+            <div class="col-auto col-md-offset-9">
+                <input class="btn btn-outline-success" type="submit" value="Загрузить" />
+            </div>
+        </div>
+     }
+
+
+
+</div>
