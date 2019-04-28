@@ -11,14 +11,14 @@ namespace Movies.Tests
         [Test]
         public void TestMethod1()
         {
-            //var r = new HomeController();
+            var r = new HomeController();
             Assert.AreEqual(2, 2);
         }
-        //[Test]
-        //public void TestMethod2()
-        //{
-        //    var r = new HomeController();
-        //    Assert.AreEqual(2, 2);
-        //}
+        [Test]
+        public void TestMethod2()
+        {
+            var r = new HomeController();
+            Assert.AreEqual(2, 2);
+        }
     }
 }
