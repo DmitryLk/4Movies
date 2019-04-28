@@ -1,13 +1,20 @@
 ﻿@using System.Web.Mvc;
+@using System.Web.Mvc.Ajax;
 
 @helper PageLinks(Movies.Models.PageInfo pageInfo, WebViewPage page)
 {
     <nav aria-label="Page navigation example">
         <ul class="pagination  justify-content-end">
+
+            @*@{var ajaxOptions = new AjaxOptions { UpdateTargetId = "tablefilmajax" };}*@   @*//type-2*@
+            @{var ajaxOptions = new AjaxOptions { OnSuccess = "OnSuccess" };}                     @*//type-3*@
+
             @if (pageInfo.FlPrevPages)
             {
                 <li class="page-item">
-                    <a class="page-link" href='@page.Url.Action("Index", "Film", new { page = pageInfo.BeginPageNumber - 1 })' aria-label="Previous">
+
+                    @*@page.Ajax.ActionLink(HttpUtility.HtmlDecode("&laquo;"), "FilmTable", "Film", new { page = pageInfo.BeginPageNumber - 1, type = 2 }, ajaxOptions, new { @class = "page-link", aria_label = "Previous" })*@
+                    <a class="page-link" href='@page.Url.Action("FilmTable", "Film", new { page = pageInfo.BeginPageNumber - 1, type = 1 })' aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -18,18 +25,21 @@
             {
                 if (i == pageInfo.PageActiveNumber)
                 {
-                    <li class="page-item active"><a class="page-link" href='@page.Url.Action("Index", "Film", new { page = i })'>@i</a></li>
+                    @*<li class="page-item active"><a class="page-link" href='@page.Url.Action("Index", "Film", new { page = i })'>@i</a></li>*@
+                    <li class="page-item active">@page.Ajax.ActionLink(i.ToString(), "FilmTable", "Film", new { page = i, type = 3 }, ajaxOptions, new { @class = "page-link" })</li>
                 }
                 else
                 {
-                    <li class="page-item"><a class="page-link" href='@page.Url.Action("Index", "Film", new { page = i })'>@i</a></li>
+                    <li class="page-item"> @page.Ajax.ActionLink(i.ToString(), "FilmTable", "Film", new { page = i, type = 3 }, ajaxOptions, new { @class = "page-link" }) </li>
+                    @*<li class="page-item"><a class="page-link" href='@page.Url.Action("Index", "Film", new { page = i })'>@i</a></li>*@
                 }
             }
 
             @if (pageInfo.FlNextPages)
             {
                 <li class="page-item">
-                    <a class="page-link" href='@page.Url.Action("Index", "Film", new { page = pageInfo.EndPageNumber + 1 })' aria-label="Next">
+                    @*@page.Ajax.ActionLink(HttpUtility.HtmlDecode("&raquo;"), "FilmTable", "Film", new { page = pageInfo.EndPageNumber + 1 }, ajaxOptions, new { @class = "page-link", aria_label = "Previous" })*@
+                    <a class="page-link" href='@page.Url.Action("FilmTable", "Film", new { page = pageInfo.EndPageNumber + 1, type=1 })' aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

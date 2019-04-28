@@ -18,6 +18,7 @@ namespace Movies.Repository
             using (var context = new FilmContext())
             {
                 //result = await context.Films.ToListAsync();
+                //result = context.Films.Include(f => f.Actors).Include(f => f.Genres).Include(f => f.Producers).ToList();
                 result = context.Films.ToList();
             }
             return result;

@@ -8,6 +8,7 @@ namespace Movies.Models
     public class FilmsViewModel
     {
         public IEnumerable<Film> Films { get; set; }
+        public IEnumerable<string> FilmsName { get; set; }
         public string Title { get; set; }
         public PageInfo PageInfo { get; set; }
         public FilmsViewModel()

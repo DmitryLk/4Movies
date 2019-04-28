@@ -1,16 +1,24 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Movies.Controllers;
+using NUnit.Framework;
 
 namespace Movies.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class UnitTest1
     {
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
-            var r = new HomeController();
+            //var r = new HomeController();
+            Assert.AreEqual(2, 2);
         }
+        //[Test]
+        //public void TestMethod2()
+        //{
+        //    var r = new HomeController();
+        //    Assert.AreEqual(2, 2);
+        //}
     }
 }

@@ -8,9 +8,7 @@ namespace Movies.Repository
 {
     internal class FileManager
     {
-        public FileManager()
-        {
-        }
+        public FileManager() {}
 
 
         public async Task<InitialMoviesDataDTO> InitialImportFromFile(FileRequestDTO requestDTO)

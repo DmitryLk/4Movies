@@ -1,4 +1,5 @@
-﻿
+﻿@using System.Web.Optimization;
+
 @{
     Layout = null;
 }
@@ -20,7 +21,7 @@
 
 
 <body>
-    <div class="container">
+    <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">MOVIES</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,12 +35,12 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>*@
 
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "nav-link" })
                     </li>
 
                     <li class="nav-item">
-                        @Html.ActionLink("MovieList", "Index", "Film", new { }, new { @class = "nav-link" })
+                        @Html.ActionLink("MovieList", "FilmIndex", "Film", new { }, new { @class = "nav-link" })
                     </li>
 
                     <li class="nav-item dropdown">
@@ -80,11 +81,16 @@
         @RenderBody()
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js" integrity="sha256-PAC000yuHt78nszJ2RO0OiDMu/uLzPLRlYTk8J3AO10=" crossorigin="anonymous"></script>
 
+
+
+
+    
+    
 
     <script>
         $(document).on('change', '.custom-file-input', function () {
@@ -93,5 +99,15 @@
         });
     </script>
 
+    @RenderSection("scripts", required: false)
+
 </body>
 </html>
+
+
+
+@*@Scripts.Render("https://code.jquery.com/jquery-3.3.1.slim.min.js")
+    @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js")
+    @Scripts.Render("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")*@
+@*<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>*@
+@*<script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>*@

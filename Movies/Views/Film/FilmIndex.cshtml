@@ -1,0 +1,80 @@
+﻿@model Movies.Models.FilmsViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@*@Ajax.ActionLink("testActionLink", "Test", "Film", new AjaxOptions { UpdateTargetId = "FilmTableDiv" })
+<a class="test1" href="#">testjQueryload</a>
+<div class="test2">spaceholder</div>*@
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Название фильма</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tablefilmajax">
+        @Html.Partial("FilmTable", Model)
+    </tbody>
+</table>
+
+
+@MyHelpers.PageLinks(Model.PageInfo, this)
+
+
+@section scripts {
+    <script type="text/javascript">
+        console.log(1);
+        $('.test1').click(
+            function () {
+                $('.test2').load("http://localhost:65407/Film/Test");
+            }
+        );
+
+
+        function OnSuccess(data) {
+            console.log("onsuc");
+            console.log(data.length);
+
+            $('.test2').html("A");
+
+            var targ = $("#tablefilmajax");
+            targ.empty();
+
+
+            page = data.PageInfo.PageActiveNumber - data.PageInfo.BeginPageNumber;
+            if (data.PageInfo.BeginPageNumber > 5) page++;
+            data = data.Films;
+
+
+            for (var i = 0; i < data.length; i++) {
+                console.log(i);
+                targ.append("<tr><td>" + data[i] + "</td><td>" +
+                    "<a href='/Film/Edit'>Edit</a>" + " | " +
+                    "<a href='/Film/Details'>Details</a>" + " | " +
+                    "<a href='/Film/Delete'>Delete</a>" + 
+                    "</td></tr> ");
+            }
+
+
+            $('.page-item.active').removeClass("active");
+            $('.page-item:eq(' + page + ')').addClass("active");
+
+            console.log(data.length);
+
+
+
+        };
+    </script>
+}
