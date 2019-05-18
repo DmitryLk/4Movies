@@ -2,9 +2,9 @@
 
 @foreach (var item in Model.Films)
 {
-    <tr>
-        <td>@item.Name</td>
-        <td>
+    <tr class="d-flex">
+        <td class="col-8">@item.Name</td>
+        <td class="col-4">
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })

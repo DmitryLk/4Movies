@@ -5,13 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Title</h2>
+<h2 class="ml-3">@Model.Title</h2>
 
 @*@Ajax.ActionLink("testActionLink", "Test", "Film", new AjaxOptions { UpdateTargetId = "FilmTableDiv" })
 <a class="test1" href="#">testjQueryload</a>
 <div class="test2">spaceholder</div>*@
 
-<p>
+<p class="ml-3">
     @Html.ActionLink("Create New", "Create")
 </p>
 
@@ -19,9 +19,9 @@
 
 <table class="table table-striped table-bordered">
     <thead>
-        <tr>
-            <th>Название фильма</th>
-            <th></th>
+        <tr class="d-flex">
+            <th class="col-8">Название фильма</th>
+            <th class="col-4"></th>
         </tr>
     </thead>
     <tbody id="tablefilmajax">
@@ -60,7 +60,7 @@
 
             for (var i = 0; i < data.length; i++) {
                 console.log(i);
-                targ.append("<tr><td>" + data[i] + "</td><td>" +
+                targ.append("<tr class='d-flex'><td  class='col-8'>" + data[i] + "</td><td class='col-4'>" +
                     "<a href='/Film/Edit'>Edit</a>" + " | " +
                     "<a href='/Film/Details'>Details</a>" + " | " +
                     "<a href='/Film/Delete'>Delete</a>" + 
